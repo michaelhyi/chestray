@@ -33,28 +33,25 @@ export default function Diagnosis({ navigation }) {
         </View>
         <View style={styles.cards}>
           <View style={styles.rectangle}>
-            <View
-              style={{
-                backgroundColor: "black",
-                width: 225,
-                height: 100,
-                marginLeft: 25,
-                marginTop: 50,
-              }}
-            >
+            <View>
               <Image
                 style={{ height: 300, width: 300 }}
                 source={{ uri: data.image.uri }}
               />
-              <Text>{data.patient}</Text>
+              <Text style={styles.largeText}>{data.patient}</Text>
               {data.diagnosis === "Healthy" && (
                 <Text>Your lungs are healthy.</Text>
               )}
               {data.diagnosis !== "Healthy" && (
-                <Text>You have tested positive for {data.diagnosis}.</Text>
+                <Text style={styles.smallText}>You have tested positive for {data.diagnosis}.</Text>
               )}
-              <Text>{data.date}</Text>
-              <Text>Doctor {data.doctor}</Text>
+              <Text style={styles.smallText1}>01/14/2022 1:04 PM PST</Text>
+              <Text style={styles.smallText1}>Doctor {data.doctor}</Text>
+              <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("Landing Page")}>
+                <View style={styles.button1}>
+                  <Text style={styles.buttonText}>Exit</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -108,38 +105,39 @@ const styles = StyleSheet.create({
   },
 
   smallText: {
-    marginLeft: 25,
+    fontFamily: "Avenir-Heavy",
+    marginTop: 5,
+    color: "#5E83BA",
+    fontSize: 16,
+    alignItems: "center",
+    textAlign: "center",
+    marginRight: 20,
+  },
+  smallText1: {
     fontFamily: "Avenir-Light",
     marginTop: 20,
-    color: "#8D8D8D",
+    color: "#3A4E7A",
     fontSize: 16,
+    alignItems: "center",
+    textAlign: "center",
+    marginRight: 20,
   },
-  input: {
-    height: 40,
-    backgroundColor: "#c2d2e9",
-    width: 237,
-    padding: 10,
-    borderRadius: 15,
+  largeText: {
+    alignItems: "center",
+    textAlign: "center",
+    fontFamily: "Avenir-Heavy",
+    marginTop: 20,
+    color: "#091D36",
+    fontSize: 30,
+    marginRight: 20,
   },
-  textInputContainer: {
-    marginLeft: 25,
-    marginTop: 5,
-    borderRadius: 20,
-  },
-  textInputContainer1: {
-    marginLeft: 25,
-    marginTop: 5,
-    borderRadius: 20,
-    marginBottom: 5,
-  },
-  button: {
+  button1: {
     marginLeft: 25,
     fontFamily: "Avenir-Light",
-    marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 18,
     backgroundColor: "#3a4e7a",
     fontSize: 16,
-    width: 90,
+    width: 100,
     borderRadius: 10000,
   },
   buttonText: {
@@ -150,62 +148,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 15,
   },
-  buttonContainer: {
-    alignContent: "center",
-    alignItems: "center",
-  },
-  button1: {
-    marginLeft: 25,
-    fontFamily: "Avenir-Light",
-    marginBottom: 18,
-    backgroundColor: "#3a4e7a",
-    fontSize: 16,
-    width: 175,
-    borderRadius: 10000,
-  },
-
-  header: {
-    marginLeft: 35,
-    marginTop: 10,
-    flexDirection: "column",
-  },
-
-  lightText: {
-    fontSize: 36,
-    fontWeight: "normal",
-  },
-
-  boldText: {
-    fontSize: 36,
-    fontWeight: "bold",
-  },
-
-  horizontalRule: {
-    marginTop: 15,
-    borderBottomColor: "black",
-    borderBottomWidth: 2,
-    marginRight: 250,
-  },
-
-  body: {
-    flexDirection: "column",
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  box: {
-    backgroundColor: "white",
-    paddingVertical: 15,
-    paddingLeft: 20,
-    marginHorizontal: 35,
-    marginVertical: 35,
-    shadowOffset: {
-      width: 5,
-      height: 5,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    borderRadius: 20,
-  },
+  buttonStyle: {
+    marginTop: 20, 
+    alignItems: "center", 
+    marginRight: 30,
+  }
 });
