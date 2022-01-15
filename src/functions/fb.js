@@ -42,3 +42,17 @@ export const save = async (image, diagnosis, userData, patient) => {
       ],
     });
 };
+
+export const read = async (uid, setData) => {
+  await firebase
+    .firestore()
+    .collection("userData")
+    .doc(uid)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setData(doc.data().scans);
+        console.log(doc.data().scans);
+      }
+    });
+};

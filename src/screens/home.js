@@ -6,6 +6,9 @@ export default function Home({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate("Patient")}>
         <Text>Upload an Image</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Past Scans")}>
+        <Text>View Past Scans</Text>
+      </TouchableOpacity>
       <Text>Home Screen</Text>
     </View>
   );
