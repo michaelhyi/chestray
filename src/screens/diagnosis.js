@@ -1,29 +1,68 @@
+import { useState, useContext, useEffect } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   TextInput,
-  Dimensions
+  Dimensions,
+  Image,
+  ActivityIndicator,
 } from "react-native";
 import Constants from "expo-constants";
 
-export default function Diagnosis({navigation}) {
-  return (
-    <View style={styles.container}>
-      <View style={styles.topText1Container}>
-        <Text style={styles.topText1}>Your</Text>
-        <Text style={styles.topText2}>Results</Text>
-        <View style={styles.line}/>
-      </View>
-      <View style={styles.cards}>
-        <View style={styles.rectangle}>
-            <View style={{backgroundColor: "black", width: 225, height: 100, marginLeft: 25, marginTop: 50,}}>
+import Context from "../utils/context.js";
+
+import { readDiag } from "../functions/fb.js";
+
+export default function Diagnosis({ navigation }) {
+  const { id } = useContext(Context);
+  const [data, setData] = useState(undefined);
+
+  useEffect(() => {
+    readDiag(id, setData);
+  }, []);
+
+  if (data) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.topText1Container}>
+          <Text style={styles.topText1}>Your</Text>
+          <Text style={styles.topText2}>Results</Text>
+          <View style={styles.line} />
+        </View>
+        <View style={styles.cards}>
+          <View style={styles.rectangle}>
+            <View
+              style={{
+                backgroundColor: "black",
+                width: 225,
+                height: 100,
+                marginLeft: 25,
+                marginTop: 50,
+              }}
+            >
+              <Image
+                style={{ height: 300, width: 300 }}
+                source={{ uri: data.image.uri }}
+              />
+              <Text>{data.patient}</Text>
+              {data.diagnosis === "Healthy" && (
+                <Text>Your lungs are healthy.</Text>
+              )}
+              {data.diagnosis !== "Healthy" && (
+                <Text>You have tested positive for {data.diagnosis}.</Text>
+              )}
+              <Text>{data.date}</Text>
+              <Text>Doctor {data.doctor}</Text>
+            </View>
+          </View>
         </View>
       </View>
-      </View>
-    </View>
-  );
+    );
+  }
+
+  return <ActivityIndicator />;
 }
 
 const styles = StyleSheet.create({
@@ -43,7 +82,7 @@ const styles = StyleSheet.create({
   topText2: {
     fontFamily: "Avenir-Heavy",
     fontSize: 45,
-    color: "#091d36"
+    color: "#091d36",
   },
   line: {
     marginTop: 15,

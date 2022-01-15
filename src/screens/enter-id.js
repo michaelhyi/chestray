@@ -1,40 +1,45 @@
+import { useState, useContext } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   TextInput,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import Constants from "expo-constants";
 
-import Button from "../components/button.js";
+import Context from "../utils/context.js";
 
 export default function LandingPage({ navigation }) {
+  const { id, setId } = useContext(Context);
+
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>
         <Text style={styles.topText1}>Enter</Text>
         <Text style={styles.topText2}>Information</Text>
-        <View style={styles.line}/>
+        <View style={styles.line} />
       </View>
       <View style={styles.cards}>
-          <View style={styles.rectangle}>
-            <View>
-              <Text style={styles.smallText}>Diagonsis ID</Text>
-              <View style={styles.textInputContainer}>
-                <TextInput style={styles.input}/>
-              </View>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate("Diagnosis")}>
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>Search</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
+        <View style={styles.rectangle}>
+          <View>
+            <Text style={styles.smallText}>Diagonsis ID</Text>
+            <View style={styles.textInputContainer}>
+              <TextInput style={styles.input} value={id} onChangeText={setId} />
             </View>
-         </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Diagnosis")}
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Search</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </View>
     </View>
   );
 }
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
   topText2: {
     fontFamily: "Avenir-Heavy",
     fontSize: 45,
-    color: "#091d36"
+    color: "#091d36",
   },
   line: {
     marginTop: 15,
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
   rectangle: {
     backgroundColor: "white",
     flexDirection: "row",
-    marginTop: Dimensions.get('window').height/2 - 290,
+    marginTop: Dimensions.get("window").height / 2 - 290,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

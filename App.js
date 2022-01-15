@@ -13,6 +13,7 @@ export default function App() {
   const [userData, setUserData] = useState(undefined);
   const [image, setImage] = useState(undefined);
   const [patient, setPatient] = useState(undefined);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -44,6 +45,8 @@ export default function App() {
           setImage,
           patient,
           setPatient,
+          id,
+          setId,
         }}
       >
         <NavigationContainer>

@@ -1,4 +1,5 @@
 import { firebase } from "../utils/fb.js";
+import { format } from "date-fns";
 
 export const save = async (image, diagnosis, userData, patient) => {
   let { id } = await firebase
@@ -8,7 +9,7 @@ export const save = async (image, diagnosis, userData, patient) => {
       patient: patient,
       image: image,
       diagnosis: diagnosis,
-      date: new Date(),
+      date: format(new Date(), "MM/dd/yyyy p"),
       doctor: userData.firstName + " " + userData.lastName,
     });
 
@@ -35,7 +36,7 @@ export const save = async (image, diagnosis, userData, patient) => {
           patient: patient,
           image: image,
           diagnosis: diagnosis,
-          date: new Date(),
+          date: format(new Date(), "MM/dd/yyyy p"),
           doctor: userData.firstName + " " + userData.lastName,
         },
         ...pastScans,
@@ -50,9 +51,17 @@ export const read = async (uid, setData) => {
     .doc(uid)
     .get()
     .then((doc) => {
-      if (doc.exists) {
-        setData(doc.data().scans);
-        console.log(doc.data().scans);
-      }
+      if (doc.exists) setData(doc.data().scans);
+    });
+};
+
+export const readDiag = async (id, setData) => {
+  await firebase
+    .firestore()
+    .collection("scans")
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) setData(doc.data());
     });
 };
