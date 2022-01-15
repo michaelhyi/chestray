@@ -33,13 +33,17 @@ export default function LandingPage({ navigation }) {
                 <TouchableOpacity>
                   <View style={styles.button}>
                     <Text style={styles.buttonText}>Log In</Text>
-                    <Button text="Sign in with Google" onPress={signInWithGoogleAsync} />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => signInWithGoogleAsync}>
+                  <View style={styles.button1}>
+                    <Text style={styles.buttonText}>Sign in with Google</Text>
                   </View>
                 </TouchableOpacity>
               </View>
             </View>
          </View>
-</View>
+        </View>
     </View>
   );
 }
@@ -48,7 +52,8 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
-    margin: 50,
+    marginLeft: 50,
+    marginRight: 50,
   },
   topText1Container: {
     marginTop: 20,
@@ -72,7 +77,7 @@ const styles = StyleSheet.create({
   rectangle: {
     backgroundColor: "white",
     flexDirection: "row",
-    marginTop: Dimensions.get('window').height/2 - 275,
+    marginTop: Dimensions.get('window').height/2 - 290,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -114,7 +119,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     fontFamily: "Avenir-Light",
     marginTop: 10,
-    marginBottom: 18,
+    marginBottom: 10,
     backgroundColor: "#3a4e7a",
     fontSize: 16,
     width: 90,
@@ -131,6 +136,15 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignContent: "center",
     alignItems: "center",
+  },
+  button1: {
+    marginLeft: 25,
+    fontFamily: "Avenir-Light",
+    marginBottom: 18,
+    backgroundColor: "#3a4e7a",
+    fontSize: 16,
+    width: 175,
+    borderRadius: 10000,
   },
 
   header: {
