@@ -8,7 +8,7 @@ import {
 import Constants from "expo-constants";
 
 import Button from "../components/button.js";
-import { googleSignIn } from "../functions/auth.js";
+import { signInWithGoogleAsync } from "../functions/auth.js";
 
 export default function LandingPage({ navigation }) {
   return (
@@ -20,7 +20,7 @@ export default function LandingPage({ navigation }) {
       </View>
       <View style={styles.body}>
         <View style={styles.box}></View>
-        <Button text="Sign in with Google" onPress={googleSignIn} />
+        <Button text="Sign in with Google" onPress={signInWithGoogleAsync} />
       </View>
     </View>
   );
