@@ -11,6 +11,7 @@ import { firebase } from "./src/utils/fb.js";
 
 export default function App() {
   const [user, setUser] = useState(undefined);
+  const [image, setImage] = useState(undefined);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -19,7 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <Context.Provider value={{ user, setUser }}>
+    <Context.Provider value={{ user, setUser, image, setImage }}>
       <NavigationContainer>
         <StatusBar style="dark" />
         {user && <HomeStack />}
