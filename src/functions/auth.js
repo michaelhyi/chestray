@@ -1,4 +1,5 @@
 import * as Google from "expo-google-app-auth";
+import { format } from "date-fns";
 import { firebase } from "../utils/fb.js";
 
 const isUserEqual = (googleUser, firebaseUser) => {
@@ -38,24 +39,24 @@ const onSignIn = (googleUser) => {
           if (result.additionalUserInfo.isNewUser) {
             firebase
               .firestore()
-              .collection("userData")
+              .collection("user")
               .doc(result.user.uid)
               .set({
                 uid: result.user.uid,
                 firstName: result.additionalUserInfo.profile.given_name,
                 lastName: result.additionalUserInfo.profile.family_name,
                 pfp: result.additionalUserInfo.profile.picture,
-                createdAt: new Date(),
-                lastLoggedIn: new Date(),
+                createdAt: format(new Date(), "MM/dd/yyyy p"),
+                lastLoggedIn: format(new Date(), "MM/dd/yyyy p"),
                 pastScans: [],
               });
           } else {
             firebase
               .firestore()
-              .collection("userData")
+              .collection("user")
               .doc(result.user.uid)
               .update({
-                lastLoggedIn: new Date(),
+                lastLoggedIn: format(new Date(), "MM/dd/yyyy p"),
               });
           }
         })
