@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-
 export default function LandingPage({navigation}) {
   return (
     <View style={styles.container}>
