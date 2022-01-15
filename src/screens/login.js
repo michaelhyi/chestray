@@ -16,34 +16,34 @@ export default function LandingPage({ navigation }) {
       <View style={styles.topText1Container}>
         <Text style={styles.topText1}>Enter</Text>
         <Text style={styles.topText2}>Information</Text>
-        <View style={styles.line}/>
+        <View style={styles.line} />
       </View>
       <View style={styles.cards}>
-          <View style={styles.rectangle}>
-            <View>
-              <Text style={styles.smallText}>Username</Text>
-              <View style={styles.textInputContainer}>
-                <TextInput style={styles.input}/>
-              </View>
-              <Text style={styles.smallText}>Password</Text>
-              <View style={styles.textInputContainer1}>
-                <TextInput style={styles.input}/>
-              </View>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity>
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>Log In</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => signInWithGoogleAsync}>
-                  <View style={styles.button1}>
-                    <Text style={styles.buttonText}>Sign in with Google</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
+        <View style={styles.rectangle}>
+          <View>
+            <Text style={styles.smallText}>Username</Text>
+            <View style={styles.textInputContainer}>
+              <TextInput style={styles.input} />
             </View>
-         </View>
+            <Text style={styles.smallText}>Password</Text>
+            <View style={styles.textInputContainer1}>
+              <TextInput style={styles.input} />
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Log In</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={signInWithGoogleAsync}>
+                <View style={styles.button1}>
+                  <Text style={styles.buttonText}>Sign in with Google</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </View>
     </View>
   );
 }
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   topText2: {
     fontFamily: "Avenir-Heavy",
     fontSize: 45,
-    color: "#091d36"
+    color: "#091d36",
   },
   line: {
     marginTop: 15,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   rectangle: {
     backgroundColor: "white",
     flexDirection: "row",
-    marginTop: Dimensions.get('window').height/2 - 290,
+    marginTop: Dimensions.get("window").height / 2 - 290,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
