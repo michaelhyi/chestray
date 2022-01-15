@@ -39,7 +39,7 @@ const onSignIn = (googleUser) => {
           if (result.additionalUserInfo.isNewUser) {
             firebase
               .firestore()
-              .collection("user")
+              .collection("userData")
               .doc(result.user.uid)
               .set({
                 uid: result.user.uid,
@@ -53,7 +53,7 @@ const onSignIn = (googleUser) => {
           } else {
             firebase
               .firestore()
-              .collection("user")
+              .collection("userData")
               .doc(result.user.uid)
               .update({
                 lastLoggedIn: format(new Date(), "MM/dd/yyyy p"),
