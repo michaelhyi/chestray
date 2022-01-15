@@ -11,16 +11,41 @@ import { firebase } from "./src/utils/fb.js";
 
 export default function App() {
   const [user, setUser] = useState(undefined);
+  const [userData, setUserData] = useState(undefined);
   const [image, setImage] = useState(undefined);
+  const [patient, setPatient] = useState(undefined);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
-      if (user) setUser(user);
+      if (user) {
+        setUser(user);
+        await firebase
+          .firestore()
+          .collection("userData")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              setUserData(doc.data());
+            }
+          });
+      }
     });
   }, []);
 
   return (
-    <Context.Provider value={{ user, setUser, image, setImage }}>
+    <Context.Provider
+      value={{
+        user,
+        setUser,
+        userData,
+        setUserData,
+        image,
+        setImage,
+        patient,
+        setPatient,
+      }}
+    >
       <NavigationContainer>
         <StatusBar style="dark" />
         {user && <HomeStack />}

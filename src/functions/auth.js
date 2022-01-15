@@ -34,21 +34,23 @@ const onSignIn = (googleUser) => {
       firebase
         .auth()
         .signInWithCredential(credential)
-        .then((result) => {
+        .then(async (result) => {
           if (result.additionalUserInfo.isNewUser) {
-            firebase
+            await firebase
               .firestore()
               .collection("userData")
               .doc(result.user.uid)
               .set({
+                uid: result.user.uid,
                 firstName: result.additionalUserInfo.profile.given_name,
                 lastName: result.additionalUserInfo.profile.family_name,
                 pfp: result.additionalUserInfo.profile.picture,
                 createdAt: new Date(),
                 lastLoggedIn: new Date(),
-              });
+              })
+              .then(() => {});
           } else {
-            firebase
+            await firebase
               .firestore()
               .collection("userData")
               .doc(result.user.uid)

@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { StyleSheet, View, Text, ActivityIndicator, Image } from "react-native";
 
 import { process } from "../functions/tf.js";
+import { saveScan } from "../functions/fb.js";
 
 import Context from "../utils/context.js";
 
@@ -16,6 +17,7 @@ export default function Results() {
 
   useEffect(() => {
     if (diagnosis) {
+      saveScan(image, diagnosis);
     }
   }, [diagnosis]);
 
