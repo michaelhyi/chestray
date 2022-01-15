@@ -5,6 +5,7 @@ import Context from "../utils/context.js";
 
 export const saveScan = async (image, diagnosis) => {
   let { userData, patient } = useContext(Context);
+
   let { id } = await firebase
     .firestore()
     .collection("scans")

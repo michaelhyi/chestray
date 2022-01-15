@@ -7,10 +7,28 @@ import {
   Dimensions,
 } from "react-native";
 import Constants from "expo-constants";
-
-import { pickImage } from "../functions/img-picker.js";
+import { useContext } from "react";
+import Context from "../utils/context.js";
+import * as ImagePicker from "expo-image-picker";
 
 export default function Patient({ navigation }) {
+  const { image, setImage } = useContext(Context);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setImage(result);
+      navigation.navigate("Results");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>

@@ -1,7 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-import { pickImage } from "../functions/img-picker.js";
-
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
