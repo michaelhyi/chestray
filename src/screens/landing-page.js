@@ -1,38 +1,46 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import Constants from "expo-constants";
-
-import Button from "../components/button.js";
-
-export default function LandingPage({ navigation }) {
+export default function LandingPage({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.lightText}>Select</Text>
-        <Text style={styles.boldText}>Login</Text>
-        <View style={styles.horizontalRule} />
+      <View style={styles.topText1Container}>
+        <Text style={styles.topText1}>Select</Text>
+        <Text style={styles.topText2}>Login</Text>
+        <View style={styles.line}/>
       </View>
-      <View style={styles.body}>
-        <View style={styles.box}>
-          <Text style={styles.boldText}>Doctor</Text>
-          <Text>Upload and Manage Diagnosis</Text>
-          <View style={{ flexDirection: "row" }}>
-            <Button text="Login" onPress={() => navigation.navigate("Login")} />
-            <Button
-              text="Sign Up"
-              onPress={() => navigation.navigate("Sign Up")}
-            />
+      <View style={styles.cards}>
+          <View style={styles.rectangle}>
+            <View>
+              <Text style={styles.largeText}>Doctor</Text>
+              <Text style={styles.smallText}>Upload and Manage Diagonsis</Text>
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Log In</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.boldText}>Patient</Text>
-          <Text>View Your Diagnosis</Text>
-          <View style={{ flexDirection: "row" }}>
-            <Button
-              text="Enter Diagnosis ID"
-              onPress={() => navigation.navigate("Enter Diagnosis ID")}
-            />
+          <View style={styles.rectangle1}>
+            <View>
+              <Text style={styles.largeText}>Patient</Text>
+              <Text style={styles.smallText}>View your Diagonsis</Text>
+              <TouchableOpacity>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Select</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+          <View style={styles.rectangle1}>
+            <View>
+              <Text style={styles.largeText}>Admin</Text>
+              <Text style={styles.smallText}>Monitor Server Status</Text>
+              <TouchableOpacity>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Log In</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
       </View>
     </View>
   );
@@ -40,48 +48,93 @@ export default function LandingPage({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight,
+    flex: 1,
+    margin: 50,
   },
-
-  header: {
-    marginLeft: 35,
-    marginTop: 10,
-    flexDirection: "column",
+  topText1Container: {
+    marginTop: 20,
   },
-
-  lightText: {
-    fontSize: 36,
-    fontWeight: "normal",
+  topText1: {
+    fontFamily: "Avenir-Light",
+    fontSize: 45,
   },
-
-  boldText: {
-    fontSize: 36,
-    fontWeight: "bold",
+  topText2: {
+    fontFamily: "Avenir-Heavy",
+    fontSize: 45,
+    color: "#091d36"
   },
-
-  horizontalRule: {
+  line: {
     marginTop: 15,
-    borderBottomColor: "black",
-    borderBottomWidth: 2,
-    marginRight: 250,
+    backgroundColor: "#3a4e7a",
+    height: 3,
+    width: "50%",
+    borderRadius: 10,
   },
 
-  body: {
-    flexDirection: "column",
-  },
-
-  box: {
+  rectangle: {
     backgroundColor: "white",
-    paddingVertical: 15,
-    paddingLeft: 20,
-    marginHorizontal: 35,
-    marginVertical: 35,
+    flexDirection: "row",
+    marginTop: 30,
+    shadowColor: "#000",
     shadowOffset: {
-      width: 5,
-      height: 5,
+      width: 0,
+      height: 3,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    borderRadius: 20,
+    shadowOpacity: 0.2,
+    shadowRadius: 3.84,
+    elevation: 10,
+    marginBottom: 10,
+    borderRadius: 15,
   },
+
+  rectangle1: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    marginTop: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.84,
+    elevation: 10,
+    marginBottom: 10,
+    borderRadius: 15,
+  },
+
+  largeText: {
+    marginTop: 15,
+    fontFamily: "Avenir-Heavy",
+    fontSize: 35,
+    marginLeft: 25,
+    color: "#3a4e7a"
+  },
+
+  smallText: {
+    marginLeft: 25,
+    fontFamily: "Avenir-Light",
+    marginTop: 4,
+    color: "#8D8D8D",
+    fontSize: 16,
+  },
+
+  button: {
+    marginLeft: 25,
+    fontFamily: "Avenir-Light",
+    marginTop: 10,
+    marginBottom: 18,
+    backgroundColor: "#3a4e7a",
+    fontSize: 16,
+    width: 90,
+    borderRadius: 10000,
+  },
+  buttonText: {
+    alignContent: "center",
+    textAlign: "center",
+    margin: 5,
+    fontFamily: "Avenir-Light",
+    color: "white",
+    fontSize: 15,
+  }
 });
