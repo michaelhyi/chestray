@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import LandingStack from "./src/components/landing-stack.js";
 
-import Home from "./src/screens/home.js";
+import HomeStack from "./src/components/home-stack.js";
 
 import Context from "./src/utils/context.js";
 import { firebase } from "./src/utils/fb.js";
@@ -22,7 +22,7 @@ export default function App() {
     <Context.Provider value={{ user, setUser }}>
       <NavigationContainer>
         <StatusBar style="dark" />
-        {user && <Home />}
+        {user && <HomeStack />}
         {!user && <LandingStack />}
       </NavigationContainer>
     </Context.Provider>

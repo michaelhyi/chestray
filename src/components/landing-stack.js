@@ -10,7 +10,10 @@ const Stack = createStackNavigator();
 
 export default function LandingStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      initialRouteName="Landing Page"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="Landing Page" component={LandingPage} />
       <Stack.Screen name="Enter Diagnosis ID" component={EnterID} />
       <Stack.Screen name="Diagnosis" component={Diagnosis} />
