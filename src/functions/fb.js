@@ -1,11 +1,6 @@
-import * as firebase from "firebase";
-import { useContext } from "react";
+import { firebase } from "../utils/fb.js";
 
-import Context from "../utils/context.js";
-
-export const saveScan = async (image, diagnosis) => {
-  let { userData, patient } = useContext(Context);
-
+export const save = async (image, diagnosis, userData, patient) => {
   let { id } = await firebase
     .firestore()
     .collection("scans")
@@ -18,7 +13,8 @@ export const saveScan = async (image, diagnosis) => {
     });
 
   let pastScans = [];
-  await firebase.firestore
+  await firebase
+    .firestore()
     .collection("userData")
     .doc(userData.uid)
     .get()

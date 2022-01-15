@@ -12,7 +12,7 @@ import Context from "../utils/context.js";
 import * as ImagePicker from "expo-image-picker";
 
 export default function Patient({ navigation }) {
-  const { image, setImage } = useContext(Context);
+  const { image, setImage, patient, setPatient } = useContext(Context);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -41,7 +41,11 @@ export default function Patient({ navigation }) {
           <View>
             <Text style={styles.smallText}>Patient Name</Text>
             <View style={styles.textInputContainer}>
-              <TextInput style={styles.input} />
+              <TextInput
+                style={styles.input}
+                value={patient}
+                onChangeText={setPatient}
+              />
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity onPress={pickImage}>

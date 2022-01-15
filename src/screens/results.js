@@ -2,12 +2,12 @@ import { useState, useContext, useEffect } from "react";
 import { StyleSheet, View, Text, ActivityIndicator, Image } from "react-native";
 
 import { process } from "../functions/tf.js";
-import { saveScan } from "../functions/fb.js";
+import { save } from "../functions/fb.js";
 
 import Context from "../utils/context.js";
 
 export default function Results() {
-  const { image } = useContext(Context);
+  const { image, userData, patient } = useContext(Context);
   const [processing, setProcessing] = useState(true);
   const [diagnosis, setDiagnosis] = useState(undefined);
 
@@ -17,7 +17,7 @@ export default function Results() {
 
   useEffect(() => {
     if (diagnosis) {
-      saveScan(image, diagnosis);
+      save(image, diagnosis, userData, patient);
     }
   }, [diagnosis]);
 
