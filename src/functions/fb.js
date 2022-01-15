@@ -30,7 +30,7 @@ export const save = async (image, diagnosis, userData, patient) => {
     .collection("userData")
     .doc(userData.uid)
     .update({
-      scans: [
+      pastScans: [
         {
           id: id,
           patient: patient,
@@ -63,5 +63,18 @@ export const readDiag = async (id, setData) => {
     .get()
     .then((doc) => {
       if (doc.exists) setData(doc.data());
+    });
+};
+
+export const readHistory = async (id, setHistory) => {
+  await firebase
+    .firestore()
+    .collection("userData")
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setHistory([doc.data().pastScans[0], doc.data().pastScans[1]]);
+      }
     });
 };

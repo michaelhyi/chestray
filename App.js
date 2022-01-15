@@ -5,6 +5,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import LandingStack from "./src/components/landing-stack.js";
 import HomeStack from "./src/components/home-stack.js";
 
+import { readHistory } from "./src/functions/fb.js";
+
 import Context from "./src/utils/context.js";
 import { firebase } from "./src/utils/fb.js";
 
@@ -14,6 +16,7 @@ export default function App() {
   const [image, setImage] = useState(undefined);
   const [patient, setPatient] = useState(undefined);
   const [id, setId] = useState("");
+  const [history, setHistory] = useState(undefined);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -27,6 +30,7 @@ export default function App() {
           .then((doc) => {
             if (doc.exists) {
               setUserData(doc.data());
+              readHistory(user.uid, setHistory);
             }
           });
       }
@@ -68,6 +72,7 @@ export default function App() {
         setImage,
         patient,
         setPatient,
+        history,
       }}
     >
       <NavigationContainer>
