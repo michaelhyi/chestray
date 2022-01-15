@@ -33,6 +33,28 @@ export default function App() {
     });
   }, []);
 
+  if (!user) {
+    return (
+      <Context.Provider
+        value={{
+          user,
+          setUser,
+          userData,
+          setUserData,
+          image,
+          setImage,
+          patient,
+          setPatient,
+        }}
+      >
+        <NavigationContainer>
+          <StatusBar style="dark" />
+          <LandingStack />
+        </NavigationContainer>
+      </Context.Provider>
+    );
+  }
+
   return (
     <Context.Provider
       value={{
@@ -48,8 +70,7 @@ export default function App() {
     >
       <NavigationContainer>
         <StatusBar style="dark" />
-        {user && <HomeStack />}
-        {!user && <LandingStack />}
+        <HomeStack />
       </NavigationContainer>
     </Context.Provider>
   );

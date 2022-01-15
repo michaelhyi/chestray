@@ -34,9 +34,9 @@ const onSignIn = (googleUser) => {
       firebase
         .auth()
         .signInWithCredential(credential)
-        .then(async (result) => {
+        .then((result) => {
           if (result.additionalUserInfo.isNewUser) {
-            await firebase
+            firebase
               .firestore()
               .collection("userData")
               .doc(result.user.uid)
@@ -47,10 +47,10 @@ const onSignIn = (googleUser) => {
                 pfp: result.additionalUserInfo.profile.picture,
                 createdAt: new Date(),
                 lastLoggedIn: new Date(),
-              })
-              .then(() => {});
+                pastScans: [],
+              });
           } else {
-            await firebase
+            firebase
               .firestore()
               .collection("userData")
               .doc(result.user.uid)
