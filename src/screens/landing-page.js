@@ -23,7 +23,7 @@ export default function LandingPage({navigation}) {
             <View>
               <Text style={styles.largeText}>Patient</Text>
               <Text style={styles.smallText}>View your Diagonsis</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("Enter Diagnosis ID")}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>Select</Text>
                 </View>
