@@ -1,7 +1,14 @@
 import { firebase } from "../utils/fb.js";
 import { format } from "date-fns";
 
-export const save = async (image, diagnosis, userData, patient, setHistory) => {
+export const save = async (
+  image,
+  diagnosis,
+  userData,
+  patient,
+  setHistory,
+  d
+) => {
   let { id } = await firebase
     .firestore()
     .collection("scans")
@@ -9,7 +16,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
       patient: patient,
       image: image,
       diagnosis: diagnosis,
-      date: format(new Date(), "MM/dd/yyyy p"),
+      date: d,
       doctor: userData.firstName + " " + userData.lastName,
     });
 
@@ -37,7 +44,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
             patient: patient,
             image: image,
             diagnosis: diagnosis,
-            date: format(new Date(), "MM/dd/yyyy p"),
+            date: d,
             doctor: userData.firstName + " " + userData.lastName,
           },
           ...pastScans,
@@ -49,7 +56,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
         patient: patient,
         image: image,
         diagnosis: diagnosis,
-        date: format(new Date(), "MM/dd/yyyy p"),
+        date: d,
         doctor: userData.firstName + " " + userData.lastName,
       },
       pastScans[0],
@@ -66,7 +73,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
             patient: patient,
             image: image,
             diagnosis: diagnosis,
-            date: format(new Date(), "MM/dd/yyyy p"),
+            date: d,
             doctor: userData.firstName + " " + userData.lastName,
           },
         ],
@@ -77,7 +84,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
         patient: patient,
         image: image,
         diagnosis: diagnosis,
-        date: format(new Date(), "MM/dd/yyyy p"),
+        date: d,
         doctor: userData.firstName + " " + userData.lastName,
       },
     ]);

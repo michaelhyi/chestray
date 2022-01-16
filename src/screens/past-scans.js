@@ -16,7 +16,7 @@ import { read } from "../functions/fb.js";
 import Context from "../utils/context.js";
 
 export default function PastScans({ navigation }) {
-  const { userData } = useContext(Context);
+  const { userData, setScan } = useContext(Context);
   const [data, setData] = useState(undefined);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export default function PastScans({ navigation }) {
   const renderItem = ({ item }) => (
     <Item
       onPress={() => {
+        setScan(item);
         navigation.navigate("View Scan");
       }}
       patient={item.patient}

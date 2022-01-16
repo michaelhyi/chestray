@@ -14,9 +14,15 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Context from "../utils/context.js";
 
 export default function Home({ navigation }) {
-  const { userData, history } = useContext(Context);
+  const { userData, history, setScan } = useContext(Context);
 
-  if (!userData) return <ActivityIndicator style={{marginTop: 100}}/>;
+  if (!userData) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   if (!history || history.length === 0) {
     return (
@@ -138,7 +144,13 @@ export default function Home({ navigation }) {
                   justifyContent: "space-between",
                 }}
               >
-                <View style={styles.rectangle2}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setScan(history[0]);
+                    navigation.navigate("View Scan");
+                  }}
+                  style={styles.rectangle2}
+                >
                   <Fontisto name="person" size={60} style={styles.icons} />
                   <View style={{ flexDirection: "column", flexShrink: 1 }}>
                     <Text style={styles.largeText2}>{history[0].patient}</Text>
@@ -147,7 +159,7 @@ export default function Home({ navigation }) {
                     </Text>
                     <Text style={styles.smallText1}>{history[0].date}</Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -204,14 +216,20 @@ export default function Home({ navigation }) {
                 justifyContent: "space-between",
               }}
             >
-              <View style={styles.rectangle2}>
+              <TouchableOpacity
+                onPress={() => {
+                  setScan(history[0]);
+                  navigation.navigate("View Scan");
+                }}
+                style={styles.rectangle2}
+              >
                 <Fontisto name="person" size={60} style={styles.icons} />
                 <View style={{ flexDirection: "column", flexShrink: 1 }}>
                   <Text style={styles.largeText2}>{history[0].patient}</Text>
                   <Text style={styles.smallText1}>{history[0].diagnosis}</Text>
                   <Text style={styles.smallText1}>{history[0].date}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
             <View
               styles={{
@@ -219,14 +237,20 @@ export default function Home({ navigation }) {
                 justifyContent: "space-between",
               }}
             >
-              <View style={styles.rectangle2}>
+              <TouchableOpacity
+                onPress={() => {
+                  setScan(history[1]);
+                  navigation.navigate("View Scan");
+                }}
+                style={styles.rectangle2}
+              >
                 <Fontisto name="person" size={60} style={styles.icons} />
                 <View style={{ flexDirection: "column", flexShrink: 1 }}>
                   <Text style={styles.largeText2}>{history[1].patient}</Text>
                   <Text style={styles.smallText1}>{history[1].diagnosis}</Text>
                   <Text style={styles.smallText1}>{history[1].date}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -370,7 +394,7 @@ const styles = StyleSheet.create({
   circle: {
     width: 35,
     height: 35,
-    borderRadius: 35/2,
+    borderRadius: 35 / 2,
     backgroundColor: "white",
     marginBottom: 10,
   },

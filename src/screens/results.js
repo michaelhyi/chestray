@@ -1,5 +1,13 @@
 import { useState, useContext, useEffect } from "react";
-import { StyleSheet, View, Text, ActivityIndicator, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import format from "date-fns";
 
 import { process } from "../functions/tf.js";
 import { save } from "../functions/fb.js";
@@ -7,10 +15,11 @@ import { save } from "../functions/fb.js";
 import Context from "../utils/context.js";
 import Constants from "expo-constants";
 
-export default function Results({navigation}) {
+export default function Results({ navigation }) {
   const { image, userData, patient, setHistory } = useContext(Context);
   const [processing, setProcessing] = useState(true);
   const [diagnosis, setDiagnosis] = useState(undefined);
+  const [d, setD] = useState(undefined);
 
   useEffect(() => {
     process(image, setDiagnosis, setProcessing);
@@ -18,7 +27,15 @@ export default function Results({navigation}) {
 
   useEffect(() => {
     if (diagnosis) {
-      save(image, diagnosis, userData, patient, setHistory);
+      setD(format(new Date(), "MM/dd/yyyy p"));
+      save(
+        image,
+        diagnosis,
+        userData,
+        patient,
+        setHistory,
+        format(new Date(), "MM/dd/yyyy p")
+      );
     }
   }, [diagnosis]);
 
@@ -31,34 +48,37 @@ export default function Results({navigation}) {
 
   return (
     <View style={styles.container}>
-    <View style={styles.topText1Container}>
-      <Text style={styles.topText1}>Patient</Text>
-      <Text style={styles.topText2}>Results</Text>
-      <View style={styles.line} />
-    </View>
-    <View style={styles.cards}>
-      <View style={styles.rectangle}>
-        <View style={{marginLeft: 17}}>
-          <Image
-            style={{ height: 250, width: 250, marginTop: 30 }}
-            source={{ uri: image.uri }}
-          />
-          <Text style={styles.largeText}>{patient}</Text>
-          {diagnosis === "Healthy" && (
-            <Text>Your lungs are healthy.</Text>
-          )}
-          {diagnosis !== "Healthy" && (
-            <Text style={styles.smallText}>{patient} has tested for {diagnosis}.</Text>
-          )}
-          <Text style={styles.smallText1}>01/14/2022 1:04 PM PST</Text>
-          <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("Home")}>
-            <View style={styles.button1}>
-              <Text style={styles.buttonText}>Exit</Text>
-            </View>
-          </TouchableOpacity>
+      <View style={styles.topText1Container}>
+        <Text style={styles.topText1}>Patient</Text>
+        <Text style={styles.topText2}>Results</Text>
+        <View style={styles.line} />
+      </View>
+      <View style={styles.cards}>
+        <View style={styles.rectangle}>
+          <View style={{ marginLeft: 17 }}>
+            <Image
+              style={{ height: 250, width: 250, marginTop: 30 }}
+              source={{ uri: image.uri }}
+            />
+            <Text style={styles.largeText}>{patient}</Text>
+            {diagnosis === "Healthy" && <Text>Your lungs are healthy.</Text>}
+            {diagnosis !== "Healthy" && (
+              <Text style={styles.smallText}>
+                {patient} has tested positive for {diagnosis}.
+              </Text>
+            )}
+            <Text style={styles.smallText1}>{d}</Text>
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              onPress={() => navigation.navigate("Home")}
+            >
+              <View style={styles.button1}>
+                <Text style={styles.buttonText}>Exit</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
     </View>
   );
 }
@@ -150,8 +170,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   buttonStyle: {
-    marginTop: 20, 
-    alignItems: "center", 
+    marginTop: 20,
+    alignItems: "center",
     marginRight: 30,
   },
 });

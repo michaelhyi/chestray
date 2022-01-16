@@ -17,6 +17,7 @@ export default function App() {
   const [patient, setPatient] = useState(undefined);
   const [id, setId] = useState("");
   const [history, setHistory] = useState(undefined);
+  const [scan, setScan] = useState(undefined);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -74,6 +75,8 @@ export default function App() {
         setPatient,
         history,
         setHistory,
+        scan,
+        setScan,
       }}
     >
       <NavigationContainer>
