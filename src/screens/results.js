@@ -55,27 +55,34 @@ export default function Results({ navigation }) {
       </View>
       <View style={styles.cards}>
         <View style={styles.rectangle}>
-          <View style={{ marginLeft: 17 }}>
+          <View style={{ marginLeft: 30 }}>
             <Image
               style={{ height: 250, width: 250, marginTop: 30 }}
               source={{ uri: image.uri }}
             />
-            <Text style={styles.largeText}>{patient}</Text>
-            {diagnosis === "Healthy" && <Text>Your lungs are healthy.</Text>}
-            {diagnosis !== "Healthy" && (
-              <Text style={styles.smallText}>
-                {patient} has tested positive for {diagnosis}.
-              </Text>
-            )}
-            <Text style={styles.smallText1}>{d}</Text>
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={() => navigation.navigate("Home")}
-            >
-              <View style={styles.button1}>
-                <Text style={styles.buttonText}>Exit</Text>
+            <View style={{ marginLeft: 10 }}>
+              <View style={{ marginLeft: 15 }}>
+                <Text style={styles.largeText}>{patient}</Text>
+                {diagnosis === "Healthy" && (
+                  <Text>Your lungs are healthy.</Text>
+                )}
+                {diagnosis !== "Healthy" && (
+                  <Text style={styles.smallText}>
+                    {patient} has tested positive for {diagnosis}.
+                  </Text>
+                )}
+                <Text style={styles.smallText1}>{d}</Text>
               </View>
-            </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate("Home")}
+              >
+                <View style={styles.button1}>
+                  <Text style={styles.buttonText}>Exit</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

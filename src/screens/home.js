@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import Fontisto from "react-native-vector-icons/Fontisto";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import Context from "../utils/context.js";
@@ -29,13 +30,15 @@ export default function Home({ navigation }) {
       <View style={styles.container}>
         <View style={styles.topText1Container}>
           <View style={styles.circle}>
-            <FontAwesome name="gear" size={25} style={styles.icons} />
+            <Ionicons name="exit" size={25} style={styles.icons1} />
           </View>
-          <Text style={styles.topText2}>Hello</Text>
-          <Text style={styles.topText2}>
-            {userData.firstName + " " + userData.lastName}!
-          </Text>
-          <Text style={styles.topText1}>How are you feeling today?</Text>
+          <View style={{ marginTop: -50 }}>
+            <Text style={styles.topText2}>Hello</Text>
+            <Text style={styles.topText2}>
+              {userData.firstName + " " + userData.lastName}!
+            </Text>
+            <Text style={styles.topText1}>"Your devotion brings healing."</Text>
+          </View>
         </View>
         <View style={styles.cards}>
           <View
@@ -78,7 +81,7 @@ export default function Home({ navigation }) {
             <View style={styles.cards1}>
               <Text style={styles.largeText1}>Recent History</Text>
               <Text
-                style={{ ...styles.largeText1, marginTop: 85, marginLeft: 70 }}
+                style={{ ...styles.largeText1, marginTop: 100, marginLeft: 75 }}
               >
                 You have no data.
               </Text>
@@ -94,13 +97,15 @@ export default function Home({ navigation }) {
       <View style={styles.container}>
         <View style={styles.topText1Container}>
           <View style={styles.circle}>
-            <FontAwesome name="gear" size={25} style={styles.icons1} />
+            <Ionicons name="exit" size={25} style={styles.icons1} />
           </View>
-          <Text style={styles.topText2}>Hello</Text>
-          <Text style={styles.topText2}>
-            {userData.firstName + " " + userData.lastName}!
-          </Text>
-          <Text style={styles.topText1}>How are you feeling today?</Text>
+          <View style={{ marginTop: -50 }}>
+            <Text style={styles.topText2}>Hello</Text>
+            <Text style={styles.topText2}>
+              {userData.firstName + " " + userData.lastName}!
+            </Text>
+            <Text style={styles.topText1}>"Your devotion brings healing."</Text>
+          </View>
         </View>
         <View style={styles.cards}>
           <View
@@ -174,11 +179,16 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>
-        <Text style={styles.topText2}>Hello</Text>
-        <Text style={styles.topText2}>
-          {userData.firstName + " " + userData.lastName}!
-        </Text>
-        <Text style={styles.topText1}>How are you feeling today?</Text>
+        <View style={styles.circle}>
+          <Ionicons name="exit" size={25} style={styles.icons1} />
+        </View>
+        <View style={{ marginTop: -50 }}>
+          <Text style={styles.topText2}>Hello</Text>
+          <Text style={styles.topText2}>
+            {userData.firstName + " " + userData.lastName}!
+          </Text>
+          <Text style={styles.topText1}>"Your devotion brings healing."</Text>
+        </View>
       </View>
       <View style={styles.cards}>
         <View
@@ -375,7 +385,7 @@ const styles = StyleSheet.create({
   },
   recentHistory: {
     marginTop: 30,
-    height: 400,
+    height: 500,
     marginLeft: -30,
     marginRight: -30,
     backgroundColor: "white",
@@ -401,6 +411,7 @@ const styles = StyleSheet.create({
     borderRadius: 35 / 2,
     backgroundColor: "white",
     marginBottom: 10,
+    marginLeft: 315,
   },
   icons1: {
     color: "#5e83ba",

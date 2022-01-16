@@ -38,7 +38,7 @@ export default function Patient({ navigation }) {
       </View>
       <View style={styles.cards}>
         <View style={styles.rectangle}>
-          <View>
+          <View style={{ marginLeft: 12 }}>
             <Text style={styles.smallText}>Patient Name</Text>
             <View style={styles.textInputContainer}>
               <TextInput

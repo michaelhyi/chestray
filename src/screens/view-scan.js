@@ -5,7 +5,7 @@ import Constants from "expo-constants";
 
 import Context from "../utils/context.js";
 
-export default function ViewScan() {
+export default function ViewScan({ navigation }) {
   const { scan } = useContext(Context);
 
   return (
@@ -17,29 +17,34 @@ export default function ViewScan() {
       </View>
       <View style={styles.cards}>
         <View style={styles.rectangle}>
-          <View style={{ marginLeft: 17 }}>
+          <View style={{ marginLeft: 30 }}>
             <Image
               style={{ height: 250, width: 250, marginTop: 30 }}
               source={{ uri: scan.image.uri }}
             />
-            <Text style={styles.largeText}>{scan.patient}</Text>
-            {scan.diagnosis === "Healthy" && (
-              <Text>Your lungs are healthy.</Text>
-            )}
-            {scan.diagnosis !== "Healthy" && (
-              <Text style={styles.smallText}>
-                {scan.patient} has tested positive for {scan.diagnosis}.
-              </Text>
-            )}
-            <Text style={styles.smallText1}>{scan.date}</Text>
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={() => navigation.navigate("Home")}
-            >
-              <View style={styles.button1}>
-                <Text style={styles.buttonText}>Exit</Text>
+            <View style={{ marginLeft: 10 }}>
+              <View style={{ marginLeft: 15 }}>
+                <Text style={styles.largeText}>{scan.patient}</Text>
+                {scan.diagnosis === "Healthy" && (
+                  <Text>Your lungs are healthy.</Text>
+                )}
+                {scan.diagnosis !== "Healthy" && (
+                  <Text style={styles.smallText}>
+                    {scan.patient} has tested positive for {scan.diagnosis}.
+                  </Text>
+                )}
+                <Text style={styles.smallText1}>{scan.date}</Text>
               </View>
-            </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate("Home")}
+              >
+                <View style={styles.button1}>
+                  <Text style={styles.buttonText}>Exit</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
