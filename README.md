@@ -5,4 +5,4 @@ A powerful bridge between doctors and patients. An AI recognition software that 
 
 ## Screenshots
 
-!(https://cdn.discordapp.com/attachments/889422771426328577/932177890353758239/IMG_2397.PNG)
+!(https://user-images.githubusercontent.com/63271391/149651680-0095cedd-518b-47cb-9ee2-ccede794cef9.PNG)
