@@ -16,6 +16,7 @@ export default function Item({ onPress, patient, diagnosis, date }) {
 
 const styles = StyleSheet.create({
   item: {
+    paddingRight: 100,
     backgroundColor: "#c2d2e9",
     flexDirection: "row",
     marginTop: 10,

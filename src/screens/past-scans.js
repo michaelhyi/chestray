@@ -1,3 +1,4 @@
+import Constants from "expo-constants";
 import { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
@@ -6,6 +7,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Item from "../components/item.js";
 
@@ -35,7 +37,12 @@ export default function PastScans({ navigation }) {
   if (data) {
     return (
       <View style={styles.container}>
-        <Text>Past Scans Screen</Text>
+        <Ionicons name="arrow-back-circle" size={63} style={styles.icons} />
+        <View style={styles.topText1Container}>
+          <Text style={styles.topText1}>Past</Text>
+          <Text style={styles.topText2}>Scans</Text>
+          <View style={styles.line} />
+        </View>
         <FlatList
           data={data}
           renderItem={renderItem}
@@ -47,13 +54,44 @@ export default function PastScans({ navigation }) {
     );
   }
 
-  return <ActivityIndicator />;
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ActivityIndicator />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
+  icons: {
+    marginRight: 255,
+    color: "#5e83ba",
+  },
   container: {
+    paddingTop: Constants.statusBarHeight,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  topText1Container: {
+    marginTop: 0,
+  },
+  topText1: {
+    textAlign: "center",
+    fontFamily: "Avenir-Light",
+    fontSize: 45,
+  },
+  topText2: {
+    textAlign: "center",
+    fontFamily: "Avenir-Heavy",
+    fontSize: 45,
+    color: "#091d36",
+  },
+  line: {
+    marginTop: 15,
+    backgroundColor: "#3a4e7a",
+    height: 3,
+    width: "50%",
+    borderRadius: 10,
   },
 });
