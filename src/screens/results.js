@@ -7,7 +7,7 @@ import { save } from "../functions/fb.js";
 import Context from "../utils/context.js";
 
 export default function Results() {
-  const { image, userData, patient } = useContext(Context);
+  const { image, userData, patient, setHistory } = useContext(Context);
   const [processing, setProcessing] = useState(true);
   const [diagnosis, setDiagnosis] = useState(undefined);
 
@@ -17,7 +17,7 @@ export default function Results() {
 
   useEffect(() => {
     if (diagnosis) {
-      save(image, diagnosis, userData, patient);
+      save(image, diagnosis, userData, patient, setHistory);
     }
   }, [diagnosis]);
 

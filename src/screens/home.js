@@ -17,7 +17,7 @@ export default function Home({ navigation }) {
 
   if (!userData) return <ActivityIndicator />;
 
-  if (!history) {
+  if (!history || history.length === 0) {
     return (
       <View style={styles.container}>
         <View style={styles.topText1Container}>
@@ -64,12 +64,90 @@ export default function Home({ navigation }) {
           </View>
         </View>
         <View>
-          <Text>You have no data.</Text>
+          <View style={styles.recentHistory}>
+            <View style={styles.cards1}>
+              <Text style={styles.largeText1}>Recent History</Text>
+              <Text>You have no data.</Text>
+            </View>
+          </View>
         </View>
       </View>
     );
   }
 
+  if (history.length === 1) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.topText1Container}>
+          <Text style={styles.topText2}>Hello</Text>
+          <Text style={styles.topText2}>
+            {userData.firstName + " " + userData.lastName}!
+          </Text>
+          <Text style={styles.topText1}>How are you feeling today?</Text>
+        </View>
+        <View style={styles.cards}>
+          <View
+            styles={{
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <TouchableOpacity onPress={() => navigation.navigate("Patient")}>
+              <View style={styles.rectangle}>
+                <Fontisto name="doctor" size={60} style={styles.icons} />
+                <View style={{ flexDirection: "column", flexShrink: 1 }}>
+                  <Text style={styles.largeText}>Upload Image</Text>
+                  <Text style={styles.smallText}>
+                    Upload a diagonsis for a patient
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View
+            styles={{
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <TouchableOpacity onPress={() => navigation.navigate("Past Scans")}>
+              <View style={styles.rectangle1}>
+                <Fontisto name="bed-patient" size={60} style={styles.icons} />
+                <View style={{ flexDirection: "column", flexShrink: 1 }}>
+                  <Text style={styles.largeText}>View Diagonsis</Text>
+                  <Text style={styles.smallText}>View a diagonsis</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View>
+          <View style={styles.recentHistory}>
+            <View style={styles.cards1}>
+              <Text style={styles.largeText1}>Recent History</Text>
+              <View
+                styles={{
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={styles.rectangle2}>
+                  <Fontisto name="person" size={60} style={styles.icons} />
+                  <View style={{ flexDirection: "column", flexShrink: 1 }}>
+                    <Text style={styles.largeText2}>{history[0].patient}</Text>
+                    <Text style={styles.smallText1}>
+                      {history[0].diagnosis}
+                    </Text>
+                    <Text style={styles.smallText1}>{history[0].date}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>
