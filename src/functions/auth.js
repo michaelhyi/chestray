@@ -74,6 +74,11 @@ const onSignIn = (googleUser) => {
   });
 };
 
+export const signOut = async () => {
+  await firebase.auth().signOut();
+  console.log("done");
+};
+
 export const signInWithGoogleAsync = async () => {
   try {
     const result = await Google.logInAsync({

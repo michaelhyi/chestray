@@ -34,6 +34,9 @@ export default function App() {
               readHistory(user.uid, setHistory);
             }
           });
+      } else {
+        setUser(undefined);
+        setUserData(undefined);
       }
     });
   }, []);

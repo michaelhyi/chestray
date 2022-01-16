@@ -6,6 +6,7 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
+  TouchableOpacity,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -38,7 +39,9 @@ export default function PastScans({ navigation }) {
   if (data) {
     return (
       <View style={styles.container}>
-        <Ionicons name="arrow-back-circle" size={63} style={styles.icons} />
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <Ionicons name="arrow-back-circle" size={50} style={styles.icons} />
+        </TouchableOpacity>
         <View style={styles.topText1Container}>
           <Text style={styles.topText1}>Past</Text>
           <Text style={styles.topText2}>Scans</Text>
@@ -64,8 +67,9 @@ export default function PastScans({ navigation }) {
 
 const styles = StyleSheet.create({
   icons: {
-    marginRight: 255,
+    marginTop: 15,
     color: "#5e83ba",
+    marginBottom: 5,
   },
   container: {
     paddingTop: Constants.statusBarHeight,

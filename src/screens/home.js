@@ -12,6 +12,8 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+import { signOut } from "../functions/auth.js";
+
 import Context from "../utils/context.js";
 
 export default function Home({ navigation }) {
@@ -29,9 +31,9 @@ export default function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <View style={styles.topText1Container}>
-          <View style={styles.circle}>
+          <TouchableOpacity onPress={signOut} style={styles.circle}>
             <Ionicons name="exit" size={25} style={styles.icons1} />
-          </View>
+          </TouchableOpacity>
           <View style={{ marginTop: -50 }}>
             <Text style={styles.topText2}>Hello</Text>
             <Text style={styles.topText2}>
@@ -96,9 +98,9 @@ export default function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <View style={styles.topText1Container}>
-          <View style={styles.circle}>
+          <TouchableOpacity onPress={signOut} style={styles.circle}>
             <Ionicons name="exit" size={25} style={styles.icons1} />
-          </View>
+          </TouchableOpacity>
           <View style={{ marginTop: -50 }}>
             <Text style={styles.topText2}>Hello</Text>
             <Text style={styles.topText2}>
@@ -179,9 +181,9 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>
-        <View style={styles.circle}>
-          <Ionicons name="exit" size={25} style={styles.icons1} />
-        </View>
+        <TouchableOpacity onPress={signOut} style={styles.circle}>
+          <Ionicons name="exit" size={45} style={styles.icons1} />
+        </TouchableOpacity>
         <View style={{ marginTop: -50 }}>
           <Text style={styles.topText2}>Hello</Text>
           <Text style={styles.topText2}>
@@ -406,8 +408,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   circle: {
-    width: 35,
-    height: 35,
+    width: 55,
+    height: 55,
     borderRadius: 35 / 2,
     backgroundColor: "white",
     marginBottom: 10,
