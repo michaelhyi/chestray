@@ -7,7 +7,6 @@ import {
   TextInput,
 } from "react-native";
 import Constants from "expo-constants";
-import Button from "../components/button.js";
 import { signInWithGoogleAsync } from "../functions/auth.js";
 
 export default function LandingPage({ navigation }) {
