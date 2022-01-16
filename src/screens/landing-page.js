@@ -1,46 +1,48 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-export default function LandingPage({navigation}) {
+export default function LandingPage({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topText1Container}>
         <Text style={styles.topText1}>Select</Text>
         <Text style={styles.topText2}>Login</Text>
-        <View style={styles.line}/>
+        <View style={styles.line} />
       </View>
       <View style={styles.cards}>
-          <View style={styles.rectangle}>
-            <View>
-              <Text style={styles.largeText}>Doctor</Text>
-              <Text style={styles.smallText}>Upload and Manage Diagonsis</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <View style={styles.button}>
-                  <Text style={styles.buttonText}>Log In</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+        <View style={styles.rectangle}>
+          <View>
+            <Text style={styles.largeText}>Doctor</Text>
+            <Text style={styles.smallText}>Upload and Manage Diagonsis</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Log In</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-          <View style={styles.rectangle1}>
-            <View>
-              <Text style={styles.largeText}>Patient</Text>
-              <Text style={styles.smallText}>View your Diagonsis</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("Enter Diagnosis ID")}>
-                <View style={styles.button}>
-                  <Text style={styles.buttonText}>Select</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+        </View>
+        <View style={styles.rectangle1}>
+          <View>
+            <Text style={styles.largeText}>Patient</Text>
+            <Text style={styles.smallText}>View your Diagonsis</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Enter Diagnosis ID")}
+            >
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Select</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-          <View style={styles.rectangle1}>
-            <View>
-              <Text style={styles.largeText}>Admin</Text>
-              <Text style={styles.smallText}>Monitor Server Status</Text>
-              <TouchableOpacity>
-                <View style={styles.button}>
-                  <Text style={styles.buttonText}>Log In</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+        </View>
+        <View style={styles.rectangle1}>
+          <View>
+            <Text style={styles.largeText}>Admin</Text>
+            <Text style={styles.smallText}>Monitor Server Status</Text>
+            <TouchableOpacity>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Log In</Text>
+              </View>
+            </TouchableOpacity>
           </View>
+        </View>
       </View>
     </View>
   );
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
   topText2: {
     fontFamily: "Avenir-Heavy",
     fontSize: 45,
-    color: "#091d36"
+    color: "#091d36",
   },
   line: {
     marginTop: 15,
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     fontFamily: "Avenir-Heavy",
     fontSize: 35,
     marginLeft: 25,
-    color: "#3a4e7a"
+    color: "#3a4e7a",
   },
 
   smallText: {
@@ -136,5 +138,5 @@ const styles = StyleSheet.create({
     fontFamily: "Avenir-Light",
     color: "white",
     fontSize: 15,
-  }
+  },
 });

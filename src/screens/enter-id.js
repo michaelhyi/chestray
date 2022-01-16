@@ -23,7 +23,7 @@ export default function LandingPage({ navigation }) {
       </View>
       <View style={styles.cards}>
         <View style={styles.rectangle}>
-          <View>
+          <View style={{ marginLeft: 13 }}>
             <Text style={styles.smallText}>Diagonsis ID</Text>
             <View style={styles.textInputContainer}>
               <TextInput style={styles.input} value={id} onChangeText={setId} />

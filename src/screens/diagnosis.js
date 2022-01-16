@@ -33,9 +33,15 @@ export default function Diagnosis({ navigation }) {
         </View>
         <View style={styles.cards}>
           <View style={styles.rectangle}>
-            <View style={{marginLeft: 13}}>
+            <View style={{ marginLeft: 21 }}>
               <Image
-                style={{ height: 300, width: 300, marginTop: 30, marginRight: 20, marginLeft: 10 }}
+                style={{
+                  height: 250,
+                  width: 250,
+                  marginTop: 30,
+                  marginRight: 20,
+                  marginLeft: 10,
+                }}
                 source={{ uri: data.image.uri }}
               />
               <Text style={styles.largeText}>{data.patient}</Text>
@@ -43,11 +49,16 @@ export default function Diagnosis({ navigation }) {
                 <Text>Your lungs are healthy.</Text>
               )}
               {data.diagnosis !== "Healthy" && (
-                <Text style={styles.smallText}>You have tested positive for {data.diagnosis}.</Text>
+                <Text style={styles.smallText}>
+                  You have tested positive for {data.diagnosis}.
+                </Text>
               )}
               <Text style={styles.smallText1}>01/14/2022 1:04 PM PST</Text>
               <Text style={styles.smallText1}>Doctor {data.doctor}</Text>
-              <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("Landing Page")}>
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate("Landing Page")}
+              >
                 <View style={styles.button1}>
                   <Text style={styles.buttonText}>Exit</Text>
                 </View>
@@ -149,8 +160,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   buttonStyle: {
-    marginTop: 20, 
-    alignItems: "center", 
+    marginTop: 20,
+    alignItems: "center",
     marginRight: 30,
-  }
+  },
 });
