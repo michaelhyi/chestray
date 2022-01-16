@@ -1,7 +1,7 @@
 import { firebase } from "../utils/fb.js";
 import { format } from "date-fns";
 
-export const save = async (image, diagnosis, userData, patient) => {
+export const save = async (image, diagnosis, userData, patient, setHistory) => {
   let { id } = await firebase
     .firestore()
     .collection("scans")
@@ -25,23 +25,63 @@ export const save = async (image, diagnosis, userData, patient) => {
       }
     });
 
-  await firebase
-    .firestore()
-    .collection("userData")
-    .doc(userData.uid)
-    .update({
-      scans: [
-        {
-          id: id,
-          patient: patient,
-          image: image,
-          diagnosis: diagnosis,
-          date: format(new Date(), "MM/dd/yyyy p"),
-          doctor: userData.firstName + " " + userData.lastName,
-        },
-        ...pastScans,
-      ],
-    });
+  if (pastScans.length > 0) {
+    await firebase
+      .firestore()
+      .collection("userData")
+      .doc(userData.uid)
+      .update({
+        pastScans: [
+          {
+            id: id,
+            patient: patient,
+            image: image,
+            diagnosis: diagnosis,
+            date: format(new Date(), "MM/dd/yyyy p"),
+            doctor: userData.firstName + " " + userData.lastName,
+          },
+          ...pastScans,
+        ],
+      });
+    setHistory([
+      {
+        id: id,
+        patient: patient,
+        image: image,
+        diagnosis: diagnosis,
+        date: format(new Date(), "MM/dd/yyyy p"),
+        doctor: userData.firstName + " " + userData.lastName,
+      },
+      ...pastScans[0],
+    ]);
+  } else {
+    await firebase
+      .firestore()
+      .collection("userData")
+      .doc(userData.uid)
+      .update({
+        pastScans: [
+          {
+            id: id,
+            patient: patient,
+            image: image,
+            diagnosis: diagnosis,
+            date: format(new Date(), "MM/dd/yyyy p"),
+            doctor: userData.firstName + " " + userData.lastName,
+          },
+        ],
+      });
+    setHistory([
+      {
+        id: id,
+        patient: patient,
+        image: image,
+        diagnosis: diagnosis,
+        date: format(new Date(), "MM/dd/yyyy p"),
+        doctor: userData.firstName + " " + userData.lastName,
+      },
+    ]);
+  }
 };
 
 export const read = async (uid, setData) => {
@@ -51,7 +91,7 @@ export const read = async (uid, setData) => {
     .doc(uid)
     .get()
     .then((doc) => {
-      if (doc.exists) setData(doc.data().scans);
+      if (doc.exists) setData(doc.data().pastScans);
     });
 };
 
@@ -63,5 +103,21 @@ export const readDiag = async (id, setData) => {
     .get()
     .then((doc) => {
       if (doc.exists) setData(doc.data());
+    });
+};
+
+export const readHistory = async (id, setHistory) => {
+  await firebase
+    .firestore()
+    .collection("userData")
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        if (doc.data().pastScans.length >= 2)
+          setHistory([doc.data().pastScans[0], doc.data().pastScans[1]]);
+        else if (doc.data().pastScans.length == 1)
+          setHistory([doc.data().pastScans[0]]);
+      }
     });
 };
