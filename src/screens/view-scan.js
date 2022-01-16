@@ -54,7 +54,7 @@ export default function ViewScan({ navigation }) {
 
               <TouchableOpacity
                 style={styles.buttonStyle}
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Past Scans")}
               >
                 <View style={styles.button1}>
                   <Text style={styles.buttonText}>Exit</Text>

@@ -57,7 +57,7 @@ export default function Results({ navigation }) {
                 style={{ height: 250, width: 250, marginTop: 30 }}
                 source={{ uri: image.uri }}
               />
-              <View style={{ marginLeft: 0 }}>
+              <View style={{ marginLeft: 14 }}>
                 <View style={{ marginLeft: 9 }}>
                   <Text style={styles.largeText}>{patient}</Text>
                 </View>
