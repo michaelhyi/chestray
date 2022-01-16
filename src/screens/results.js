@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import format from "date-fns";
+import { format } from "date-fns";
 
 import { process } from "../functions/tf.js";
 import { save } from "../functions/fb.js";
