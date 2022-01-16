@@ -30,8 +30,8 @@ export default function ViewScan({ navigation }) {
               style={{ height: 250, width: 250, marginTop: 30 }}
               source={{ uri: scan.image.uri }}
             />
-            <View style={{ marginLeft: 10 }}>
-              <View style={{ marginLeft: 15 }}>
+            <View style={{ marginLeft: 0 }}>
+              <View style={{ marginLeft: 9 }}>
                 <Text style={styles.largeText}>{scan.patient}</Text>
                 {scan.diagnosis === "Healthy" && (
                   <Text>Your lungs are healthy.</Text>

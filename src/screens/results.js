@@ -42,11 +42,39 @@ export default function Results({ navigation }) {
     }
   }, [diagnosis]);
 
-  if (processing) {
-    <View style={styles.container}>
-      <Text>Processing...</Text>
-      <ActivityIndicator />
-    </View>;
+  if (!diagnosis || !d || !id) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.topText1Container}>
+          <Text style={styles.topText1}>Patient</Text>
+          <Text style={styles.topText2}>Results</Text>
+          <View style={styles.line} />
+        </View>
+        <View style={styles.cards}>
+          <View style={styles.rectangle}>
+            <View style={{ marginLeft: 30 }}>
+              <Image
+                style={{ height: 250, width: 250, marginTop: 30 }}
+                source={{ uri: image.uri }}
+              />
+              <View style={{ marginLeft: 0 }}>
+                <View style={{ marginLeft: 9 }}>
+                  <Text style={styles.largeText}>{patient}</Text>
+                </View>
+                <TouchableOpacity
+                  style={styles.buttonStyle}
+                  onPress={() => navigation.navigate("Home")}
+                >
+                  <View style={styles.button1}>
+                    <Text style={styles.buttonText}>Exit</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
   }
 
   return (
@@ -63,8 +91,8 @@ export default function Results({ navigation }) {
               style={{ height: 250, width: 250, marginTop: 30 }}
               source={{ uri: image.uri }}
             />
-            <View style={{ marginLeft: 10 }}>
-              <View style={{ marginLeft: 15 }}>
+            <View style={{ marginLeft: 0 }}>
+              <View style={{ marginLeft: 9 }}>
                 <Text style={styles.largeText}>{patient}</Text>
                 {diagnosis === "Healthy" && (
                   <Text>Your lungs are healthy.</Text>
