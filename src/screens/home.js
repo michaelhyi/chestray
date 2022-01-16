@@ -182,7 +182,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <View style={styles.topText1Container}>
         <TouchableOpacity onPress={signOut} style={styles.circle}>
-          <Ionicons name="exit" size={45} style={styles.icons1} />
+          <Ionicons name="exit" size={25} style={styles.icons1} />
         </TouchableOpacity>
         <View style={{ marginTop: -50 }}>
           <Text style={styles.topText2}>Hello</Text>
@@ -408,8 +408,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   circle: {
-    width: 55,
-    height: 55,
+    zIndex: 1,
+    width: 35,
+    height: 35,
     borderRadius: 35 / 2,
     backgroundColor: "white",
     marginBottom: 10,
