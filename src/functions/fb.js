@@ -52,7 +52,7 @@ export const save = async (image, diagnosis, userData, patient, setHistory) => {
         date: format(new Date(), "MM/dd/yyyy p"),
         doctor: userData.firstName + " " + userData.lastName,
       },
-      ...pastScans[0],
+      pastScans[0],
     ]);
   } else {
     await firebase
