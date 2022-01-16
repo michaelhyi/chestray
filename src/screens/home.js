@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import Fontisto from "react-native-vector-icons/Fontisto";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import Context from "../utils/context.js";
 
@@ -21,6 +22,9 @@ export default function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <View style={styles.topText1Container}>
+          <View style={styles.circle}>
+            <FontAwesome name="gear" size={25} style={styles.icons} />
+          </View>
           <Text style={styles.topText2}>Hello</Text>
           <Text style={styles.topText2}>
             {userData.firstName + " " + userData.lastName}!
@@ -79,6 +83,9 @@ export default function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <View style={styles.topText1Container}>
+          <View style={styles.circle}>
+            <FontAwesome name="gear" size={25} style={styles.icons1} />
+          </View>
           <Text style={styles.topText2}>Hello</Text>
           <Text style={styles.topText2}>
             {userData.firstName + " " + userData.lastName}!
@@ -359,5 +366,19 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     marginTop: 10,
+  },
+  circle: {
+    width: 35,
+    height: 35,
+    borderRadius: 35/2,
+    backgroundColor: "white",
+    marginBottom: 10,
+  },
+  icons1: {
+    color: "#5e83ba",
+    alignContent: "center",
+    alignItems: "center",
+    marginLeft: 6.5,
+    marginTop: 5,
   },
 });
