@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     marginBottom: 10,
     borderRadius: 15,
+    marginLeft: 13,
   },
 
   smallText: {

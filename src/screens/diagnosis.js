@@ -33,9 +33,9 @@ export default function Diagnosis({ navigation }) {
         </View>
         <View style={styles.cards}>
           <View style={styles.rectangle}>
-            <View>
+            <View style={{marginLeft: 13}}>
               <Image
-                style={{ height: 300, width: 300 }}
+                style={{ height: 300, width: 300, marginTop: 30, marginRight: 20, marginLeft: 10 }}
                 source={{ uri: data.image.uri }}
               />
               <Text style={styles.largeText}>{data.patient}</Text>
