@@ -19,8 +19,22 @@ export const save = async (
       diagnosis: diagnosis,
       date: d,
       doctor: userData.firstName + " " + userData.lastName,
+      id: "",
     });
   setId(id);
+
+  await firebase
+    .firestore()
+    .collection("scans")
+    .doc(id)
+    .update({
+      patient: patient,
+      image: image,
+      diagnosis: diagnosis,
+      date: d,
+      doctor: userData.firstName + " " + userData.lastName,
+      id: id,
+    });
 
   let pastScans = [];
   await firebase

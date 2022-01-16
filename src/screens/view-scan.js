@@ -1,5 +1,13 @@
 import { useContext } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Alert,
+  Clipboard,
+} from "react-native";
 
 import Constants from "expo-constants";
 
@@ -34,6 +42,14 @@ export default function ViewScan({ navigation }) {
                   </Text>
                 )}
                 <Text style={styles.smallText1}>{scan.date}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert("Copied!");
+                    Clipboard.setString(scan.id);
+                  }}
+                >
+                  <Text style={styles.smallText1}>Copy Diagnosis ID</Text>
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity
