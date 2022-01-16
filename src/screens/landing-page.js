@@ -8,15 +8,23 @@ export default function LandingPage({ navigation }) {
         <View style={styles.line} />
       </View>
       <View style={styles.cards}>
-        <View style={styles.rectangle}>
-          <View>
-            <Text style={styles.largeText}>Doctor</Text>
-            <Text style={styles.smallText}>Upload and Manage Diagonsis</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Log In</Text>
+          <View style={styles.rectangle}>
+            <View>
+              <Text style={styles.largeText}>Doctor</Text>
+              <Text style={styles.smallText}>Upload and Manage Diagonsis</Text>
+              <View style={{ flexDirection: "row", flexShrink: 1 }}>
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                  <View style={styles.button}>
+                    <Text style={styles.buttonText}>Log In</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft: -10}}>
+                  <View style={styles.button}>
+                    <Text style={styles.buttonText}>Register</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
         <View style={styles.rectangle1}>
@@ -44,7 +52,6 @@ export default function LandingPage({ navigation }) {
           </View>
         </View>
       </View>
-    </View>
   );
 }
 
