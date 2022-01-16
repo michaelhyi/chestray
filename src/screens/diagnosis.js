@@ -44,25 +44,27 @@ export default function Diagnosis({ navigation }) {
                 }}
                 source={{ uri: data.image.uri }}
               />
-              <Text style={styles.largeText}>{data.patient}</Text>
-              {data.diagnosis === "Healthy" && (
-                <Text>Your lungs are healthy.</Text>
-              )}
-              {data.diagnosis !== "Healthy" && (
-                <Text style={styles.smallText}>
-                  You have tested positive for {data.diagnosis}.
-                </Text>
-              )}
-              <Text style={styles.smallText1}>01/14/2022 1:04 PM PST</Text>
-              <Text style={styles.smallText1}>Doctor {data.doctor}</Text>
-              <TouchableOpacity
-                style={styles.buttonStyle}
-                onPress={() => navigation.navigate("Landing Page")}
-              >
-                <View style={styles.button1}>
-                  <Text style={styles.buttonText}>Exit</Text>
-                </View>
-              </TouchableOpacity>
+              <View style={{ marginLeft: 10 }}>
+                <Text style={styles.largeText}>{data.patient}</Text>
+                {data.diagnosis === "Healthy" && (
+                  <Text>Your lungs are healthy.</Text>
+                )}
+                {data.diagnosis !== "Healthy" && (
+                  <Text style={styles.smallText}>
+                    You have tested positive for {data.diagnosis}.
+                  </Text>
+                )}
+                <Text style={styles.smallText1}>01/14/2022 1:04 PM PST</Text>
+                <Text style={styles.smallText1}>Doctor {data.doctor}</Text>
+                <TouchableOpacity
+                  style={styles.buttonStyle}
+                  onPress={() => navigation.navigate("Landing Page")}
+                >
+                  <View style={styles.button1}>
+                    <Text style={styles.buttonText}>Exit</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   button1: {
-    marginLeft: 25,
+    marginLeft: 12,
     fontFamily: "Avenir-Light",
     marginBottom: 18,
     backgroundColor: "#3a4e7a",

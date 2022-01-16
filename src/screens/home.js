@@ -77,7 +77,11 @@ export default function Home({ navigation }) {
           <View style={styles.recentHistory}>
             <View style={styles.cards1}>
               <Text style={styles.largeText1}>Recent History</Text>
-              <Text>You have no data.</Text>
+              <Text
+                style={{ ...styles.largeText1, marginTop: 85, marginLeft: 70 }}
+              >
+                You have no data.
+              </Text>
             </View>
           </View>
         </View>

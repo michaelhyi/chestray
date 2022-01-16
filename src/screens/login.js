@@ -20,7 +20,7 @@ export default function LandingPage({ navigation }) {
       </View>
       <View style={styles.cards}>
         <View style={styles.rectangle}>
-          <View>
+          <View style={{ marginLeft: 14 }}>
             <Text style={styles.smallText}>Username</Text>
             <View style={styles.textInputContainer}>
               <TextInput style={styles.input} />
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   rectangle: {
     backgroundColor: "white",
     flexDirection: "row",
-    marginTop: Dimensions.get("window").height / 2 - 290,
+    marginTop: Dimensions.get("window").height / 2 - 330,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     elevation: 10,
     marginBottom: 10,
     borderRadius: 15,
-    marginLeft: 13,
   },
 
   smallText: {
