@@ -71,8 +71,10 @@ export default function Home({ navigation }) {
               <View style={styles.rectangle1}>
                 <Fontisto name="bed-patient" size={60} style={styles.icons} />
                 <View style={{ flexDirection: "column", flexShrink: 1 }}>
-                  <Text style={styles.largeText}>View Diagonsis</Text>
-                  <Text style={styles.smallText}>View a diagonsis</Text>
+                  <Text style={styles.largeText}>View Past Scans</Text>
+                  <Text style={styles.smallText}>
+                    View past scans and their respective diagonsis
+                  </Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -138,8 +140,10 @@ export default function Home({ navigation }) {
               <View style={styles.rectangle1}>
                 <Fontisto name="bed-patient" size={60} style={styles.icons} />
                 <View style={{ flexDirection: "column", flexShrink: 1 }}>
-                  <Text style={styles.largeText}>View Diagonsis</Text>
-                  <Text style={styles.smallText}>View a diagonsis</Text>
+                  <Text style={styles.largeText}>View Past Scans</Text>
+                  <Text style={styles.smallText}>
+                    View past scans and their respective diagonsis
+                  </Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -215,8 +219,10 @@ export default function Home({ navigation }) {
             <View style={styles.rectangle1}>
               <Fontisto name="bed-patient" size={60} style={styles.icons} />
               <View style={{ flexDirection: "column", flexShrink: 1 }}>
-                <Text style={styles.largeText}>View Diagonsis</Text>
-                <Text style={styles.smallText}>View a diagonsis</Text>
+                <Text style={styles.largeText}>View Past Scans</Text>
+                <Text style={styles.smallText}>
+                  View past scans and their respective diagonsis
+                </Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -377,6 +383,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     color: "#8D8D8D",
     fontSize: 15,
+    marginBottom: 15,
   },
   smallText1: {
     marginLeft: 20,
