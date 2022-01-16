@@ -15,7 +15,7 @@ import Context from "../utils/context.js";
 export default function Home({ navigation }) {
   const { userData, history } = useContext(Context);
 
-  if (!userData) return <ActivityIndicator />;
+  if (!userData) return <ActivityIndicator style={{marginTop: 100}}/>;
 
   if (!history || history.length === 0) {
     return (
