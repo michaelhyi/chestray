@@ -1,12 +1,14 @@
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
+import Fontisto from "react-native-vector-icons/Fontisto";
 
-export default function Item({ onPress, uri, patient, diagnosis }) {
+export default function Item({ onPress, patient, diagnosis, date }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.item}>
-      <Image style={styles.image} source={{ uri: uri }} />
-      <View style={styles.text}>
-        <Text style={styles.largeText}>{patient}</Text>
-        <Text style={styles.smallText}>{diagnosis}</Text>
+      <Fontisto name="person" size={60} style={styles.icons} />
+      <View style={{ flexDirection: "column", flexShrink: 1 }}>
+        <Text style={styles.largeText2}>{patient}</Text>
+        <Text style={styles.smallText1}>{diagnosis}</Text>
+        <Text style={styles.smallText1}>{date}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -14,41 +16,40 @@ export default function Item({ onPress, uri, patient, diagnosis }) {
 
 const styles = StyleSheet.create({
   item: {
+    backgroundColor: "#c2d2e9",
     flexDirection: "row",
-    backgroundColor: "white",
-    borderRadius: 20,
-    marginHorizontal: 25,
-    marginVertical: 0,
-    padding: 15,
-    marginTop: 30,
+    marginTop: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowRadius: 3.84,
+    elevation: 10,
+    marginBottom: 10,
+    borderRadius: 17,
   },
 
-  image: {
-    height: 100,
-    width: 100,
-    borderRadius: 5,
+  icons: {
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
+    color: "#5e83ba",
   },
 
-  text: {
-    flexDirection: "column",
-  },
-  largeText: {
-    marginLeft: 10,
+  largeText2: {
+    marginTop: 15,
     fontFamily: "Avenir-Heavy",
-    fontSize: 19,
-    color: "#7c9982",
+    fontSize: 20,
+    marginLeft: 20,
   },
-  smallText: {
-    marginLeft: 10,
+
+  smallText1: {
+    marginLeft: 20,
     fontFamily: "Avenir-Light",
+    marginTop: 0,
+    color: "#3A4E7A",
     fontSize: 15,
-    color: "#8D8D8D",
   },
 });

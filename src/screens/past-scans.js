@@ -26,9 +26,9 @@ export default function PastScans({ navigation }) {
       onPress={() => {
         navigation.navigate("View Scan");
       }}
-      uri={item.image.uri}
       patient={item.patient}
       diagnosis={item.diagnosis}
+      date={item.date}
     />
   );
 

@@ -51,7 +51,7 @@ export const read = async (uid, setData) => {
     .doc(uid)
     .get()
     .then((doc) => {
-      if (doc.exists) setData(doc.data().scans);
+      if (doc.exists) setData(doc.data().pastScans);
     });
 };
 
