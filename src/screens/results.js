@@ -6,9 +6,10 @@ import {
   ActivityIndicator,
   Image,
   TouchableOpacity,
+  Clipboard,
+  Alert,
 } from "react-native";
 import { format } from "date-fns";
-
 import { process } from "../functions/tf.js";
 import { save } from "../functions/fb.js";
 
@@ -20,6 +21,7 @@ export default function Results({ navigation }) {
   const [processing, setProcessing] = useState(true);
   const [diagnosis, setDiagnosis] = useState(undefined);
   const [d, setD] = useState(undefined);
+  const [id, setId] = useState(undefined);
 
   useEffect(() => {
     process(image, setDiagnosis, setProcessing);
@@ -34,7 +36,8 @@ export default function Results({ navigation }) {
         userData,
         patient,
         setHistory,
-        format(new Date(), "MM/dd/yyyy p")
+        format(new Date(), "MM/dd/yyyy p"),
+        setId
       );
     }
   }, [diagnosis]);
@@ -72,6 +75,14 @@ export default function Results({ navigation }) {
                   </Text>
                 )}
                 <Text style={styles.smallText1}>{d}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert("Copied!");
+                    Clipboard.setString(id);
+                  }}
+                >
+                  <Text style={styles.smallText1}>Copy Diagnosis ID</Text>
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity

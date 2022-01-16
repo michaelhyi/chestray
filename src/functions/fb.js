@@ -7,7 +7,8 @@ export const save = async (
   userData,
   patient,
   setHistory,
-  d
+  d,
+  setId
 ) => {
   let { id } = await firebase
     .firestore()
@@ -19,6 +20,7 @@ export const save = async (
       date: d,
       doctor: userData.firstName + " " + userData.lastName,
     });
+  setId(id);
 
   let pastScans = [];
   await firebase
